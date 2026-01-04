@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>분양의신×홍길동 포트폴리오</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- jQuery cdn -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+
+  <!-- matter.js cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
+
+  <!-- 폰트//프리텐다드-->
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+</head>
+
+<body>
+  <div class="intro">
+    <div class="logo">
+      <p><span>이세라</span>&nbsp;&nbsp;<span class="eng-fonts-newyork">Designer</span></p>
+      <div>&nbsp;&nbsp;<span>×</span>&nbsp;&nbsp;<img src="images/intro-symbol.png" alt="" /></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="inner">
+        <a href="#" class="logo opacity">
+          <span><img src="images/intro-symbol.png" alt="" style="display: none;">SE:RA's PORTFOLIO</span>
+        </a>
+      </div>
+
+    </header>
+    <!-- visual -->
+    <section class="visual">
+      <div class="inner">
+        <h1 class="mainText">
+          <span><i class="rotate">전략적 사고 × 타고난 리더쉽</i></span>
+          <span><i class="rotate">전략적 사고 × 타고난 리더쉽</i></span>
+        </h1>
+
+        <div class="subText opacity">
+          <span class="company">분양의신</span>이 기다리던 인재<br />
+          <div class="headline">
+            '<span class="name">이세라</span>'
+            <span class="main-rolling-txt" aria-label="전문 분야">
+              <span class="publishing">퍼블리싱</span>
+              <span class="design">시각기획</span>
+              <span class="challenge">도전정신</span>
+              <span class="idea">아이디어</span>
+              <span class="communication">의사소통</span>
+            </span>
+            전문가 입니다.
+            <span class="typing-cursor"></span>
+          </div>
+        </div>
+
+        <div class="logoWrap rotate">
+          <span id="symbol1"><img src="/images/1_intro/icon1.png" alt=""></span>
+          <span id="symbol2"><img src="/images/1_intro/icon7.png" alt=""></span>
+          <span id="symbol3"><img src="/images/1_intro/icon3.png" alt=""></span>
+          <span id="symbol4"><img src="/images/1_intro/icon2.png" alt=""></span>
+          <span id="symbol5"><img src="/images/1_intro/icon5.png" alt=""></span>
+          <span id="symbol6"><img src="/images/1_intro/icon10.png" alt=""></span>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!--======================================== 자기소개 ========================================-->
+    <section id="section2">
+      <div>
+        <h2>ABOUT Me.</h2>
+
+        <!-- about me 하위 전체내용 박스-prfile-box -->
+        <div>
+          <!-- /* profile-box- div 첫자식 profile-name-box  */ -->
+          <div>
+            <ul class="basic-information">
+              <li>28</li>
+              <li>SE:RA</li>
+              <li>2000. 07. 29</li>
+              <li>example@naver.com</li>
+              <li>+82 10-1234-5678</li>
+              <li>#서서히 스며든다</li>
+            </ul>
+
+
+            <img src="images/2-sera.jpg" alt="profile-image">
+
+            <h3>이세라<span>lee se ra</span></h3>
+
+
+          </div>
+
+
+          <div id="introduction">
+            <div class="profile-info" id="education">
+
+              <h4>Education</h4>
+              <ul>
+                <li><span>2016. 03 ~ 2019. 02 </span>첨단고등학교 졸업</li>
+                <li><span>2019. 03 ~ 2024. 02 </span>광주여자대학교 실내건축디자인과 졸업(학사)</li>
+                <li>
+                  <span>2024. 11 ~ 2024. 04 </span>광주그린컴퓨터아카데미 훈련과정 수료
+                  <span>(산대특) ChatGPT를 활용한 디지털문화콘텐츠제작(UI/UX, 모션그래픽, 유튜브영상 육성)</span>
+                </li>
+              </ul>
+
+            </div>
+
+            <div class="profile-info" id="license">
+
+              <h4>License</h4>
+              <ul>
+                <li><span>2000. 00 </span>그래픽기술자격(GTQ) 포토샵 1급</li>
+                <li><span>2000. 00 </span>그래픽기술자격(GTQI) 일러스트 1급</li>
+                <li><span>2000. 00 </span>컴퓨터그래픽스운용 기능사</li>
+                <li><span>2000. 00 </span>웹디자인기능사</li>
+              </ul>
+
+            </div>
+
+            <div class="profile-info" id="activities">
+
+              <h4>Activities</h4>
+              <ul>
+
+                <li><span>2025. 06 ~ 2025. 07</span>
+                  SBS 아카데미컴퓨터아트학원 프리랜서 강사/ Photoshop·Illustrator 강의
+                </li>
+
+
+                <li><span>2024. 03 ~ 2024. 07</span>
+                  광주청년 일경험드림 플러스 15기 인턴십 - 디자인 기업 부문
+                </li>
+                <li>
+                  <span>2024. 06 ~ 2024. 12</span>
+                  광주청년일경험드림플러스 「Step_up 멘토링」참여
+                </li>
+                <li>
+                  <span>2024. 03</span>
+                  난민 건강 책자 번역 봉사활동
+                </li>
+                <li>
+                  <span>2023. 12</span>
+                  제 18회 한국공간디자인 전국공모전 수상
+                </li>
+                <li>
+                  <span>2023. 12</span>
+                  진로캠프 - 진로포트폴리오 경진대회 최우수상
+                </li>
+                <li>
+                  <span>2023. 03 ~ 2023. 10</span>
+                  광주여자대학교 실내건축디자인과 졸업전시회 졸업준비위원장 및 팀장
+                </li>
+                <li>
+                  <span>2020. 11</span>
+                  제 15회 한국공간디자인 전국공모전 수상
+                </li>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+    <!--======================================== 키워드 ========================================-->
+    <section id="bubble-rolling">
+
+      <div class="bubble-rolling-wrap">
+
+        <h2>세라<span>'S 🔑WORD</span></h2>
+        <p>
+          나는 이런 사람이고 이런게 내 키워드입니다.<br>
+          마우스를 올려 디테일한 정보를 어쩌고 저쩌고 블라블라.
+        </p>
+
+        <ul class="bubble-rolling-list">
+
+          <!-- line 1 -->
+          <li class="bubble-line bubble-left">
+            <div class="bubble-track">
+              <div class="bubble-set">
+                <span class="bubble-key">유연한</span>
+                <span class="bubble-key">배려심</span>
+                <span class="bubble-key hl">책임감</span>
+                <span class="bubble-key">신중한</span>
+              </div>
+              <div class="bubble-set" aria-hidden="true">
+                <span class="bubble-key">자유로운</span>
+                <span class="bubble-key">도전정신</span>
+                <span class="bubble-key hl">밝은 에너지</span>
+                <span class="bubble-key">긍정적인</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- line 2 -->
+          <li class="bubble-line bubble-right">
+            <div class="bubble-track">
+              <div class="bubble-set">
+                <span class="bubble-key">성실한</span>
+                <span class="bubble-key">신뢰성</span>
+                <span class="bubble-key">적응력</span>
+                <span class="bubble-key">조화로운</span>
+              </div>
+              <div class="bubble-set" aria-hidden="true">
+                <span class="bubble-key">동물</span>
+                <span class="bubble-key">여행</span>
+                <span class="bubble-key">음악</span>
+                <span class="bubble-key">등산</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- line 3 -->
+          <li class="bubble-line bubble-left bubble-slow">
+            <div class="bubble-track">
+              <div class="bubble-set">
+                <span class="bubble-key">무의미</span>
+                <span class="bubble-key">공유</span>
+                <span class="bubble-key">새로운 친구찾기</span>
+                <span class="bubble-key">라이브</span>
+              </div>
+              <div class="bubble-set" aria-hidden="true">
+                <span class="bubble-key">무의미</span>
+                <span class="bubble-key">공유</span>
+                <span class="bubble-key">새로운 친구찾기</span>
+                <span class="bubble-key">라이브</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- line 4 -->
+          <li class="bubble-line bubble-right bubble-slow">
+            <div class="bubble-track">
+              <div class="bubble-set">
+                <span class="bubble-key">나쁜 콘텐츠</span>
+                <span class="bubble-key hl">자기 소외</span>
+                <span class="bubble-key">시간 때우기</span>
+                <span class="bubble-key">모르는 사람</span>
+              </div>
+              <div class="bubble-set" aria-hidden="true">
+                <span class="bubble-key">나쁜 콘텐츠</span>
+                <span class="bubble-key hl">자기 소외</span>
+                <span class="bubble-key">시간 때우기</span>
+                <span class="bubble-key">모르는 사람</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+
+    <!--======================================== 자기소개 ========================================-->
+
+    <section class="s-profile" id="section3-like">
+      <div class="sp-wrap">
+
+        <!-- LEFT: photo + headline + bullets -->
+        <div class="sp-left">
+          <div class="sp-photo">
+            <img src="images/2-sera.jpg" alt="profile-image" />
+          </div>
+
+          <div class="sp-title">
+            <p class="kicker">복잡한 서비스도</p>
+            <p class="kicker">명확하게 만드는 디자이너는</p>
+            <h2>
+              <span class="accent">무엇</span>을 잘하나요?
+            </h2>
+            <div class="rule"></div>
+          </div>
+
+          <ol class="sp-list">
+            <li>복잡한 정보 구조를 정리해 <b>사용자 흐름</b>으로 재설계</li>
+            <li><b>데이터 기반 분석</b>을 통한 문제 정의 및 개선</li>
+            <li><b>디자인 시스템/컴포넌트</b> 기반 설계</li>
+            <li><b>Web/App/Kiosk</b> 등 멀티 디바이스 UI 설계</li>
+            <li><b>기획–UX–UI–프로토타이핑–가이드</b>까지 E2E 수행</li>
+            <li><b>PM/개발자</b>와의 협업으로 운영 효율 향상·버전 관리</li>
+          </ol>
+        </div>
+
+        <!-- MID: speech bubbles -->
+        <div class="sp-mid">
+          <div class="bubble">
+            <div class="bubble-meta">[삼성헬스스토리, 디자인시스템 작업]<br><b>서비스 기획자</b> 님</div>
+            <p class="bubble-quote">“기획자의 의도를 빠르게 파악하고,<br>개발자와의 커뮤니케이션도 매끄럽게 해줘서<br>일정 안정성을 높여줬어요.”</p>
+          </div>
+
+          <div class="bubble">
+            <div class="bubble-meta">[AI 챗봇 기반 유전체 연구 솔루션 작업]<br><b>프로젝트 개발자</b> 님</div>
+            <p class="bubble-quote">“AI 자동화, 방대한 데이터 등 복잡한 구조를<br>사용자 입장에서 단순하게 풀어내는<br>능력이 탁월했어요.”</p>
+          </div>
+
+          <div class="bubble">
+            <div class="bubble-meta">[AI 챗봇 기반 유전체 연구 솔루션 작업]<br><b>프로젝트 리더</b> 님</div>
+            <p class="bubble-quote">“기획부터 디자인, 가이드 문서까지<br>끝까지 책임지는 스타일이라<br>협업 역량이 특히 뛰어났어요.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!--======================================== 자기소개 ========================================-->
+    <section class="overview_slide">
+      <div class="slide_wrap">
+        <div class="slide_back">
+          <h3 class="title">기술력을 바탕으로</h3>
+          <div id="matter-container"></div>
+          <ul id="myList">
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/f9dab91d2d8f9.png" alt="킹룡"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/31dd0c5282672.png" alt="고릴라"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/4abfcb00fc42e.png" alt="해적선"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/20779ca0ff7db.png" alt="게임기"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/c48d0cde4a836.png" alt="지구"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/ebdf6fcf48cf6.png" alt="웃는이모지"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/933eabe79c5c8.png" alt="공부이모지"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/9e8e7e65bacf9.png" alt="호기심이모지"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/025c7e1cd5906.png" alt="하트"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/fbf5a81d0bae2.png" alt="소녀"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/a5badae2c5217.png" alt="소년"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/4faef9bdc9727.png" alt="자동차"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/bd40064c421c7.png" alt="나침반"></li>
+            <li><img src="https://cdn.imweb.me/upload/S202212289feb50bbbee7e/0e983f1fbb400.png" alt="카메라"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+    <div id="design-portfolio">
+      <!--======================================== 웹디자인 ========================================-->
+      <section id="section4">
+        <section class="con2">
+          <div class="inner">
+            <div class="mainTextBox">
+              <span>© 2026 Design & Direction by SE:RA</span>
+              <p class="title a"><i>Design</i></p>
+              <p class="title b"><i>PortFolio</i></p>
+              <p class="title c"><i>by SE:RA</i></p>
+            </div>
+            <div class="subTextBox">
+              <div class="subText">
+                <p><span>디자인</span>은 예술이 아니라, 선택을 이끌기 위한 정교한 <span>설계</span>입니다.
+                  <br>검증된 레퍼런스를 탐구하고, 상황에 맞는 장점을 조합하여,
+                  <br>가장 설득력 있는 결과물을 만듭니다.
+                </p>
+
+                <p>새로움을 위해 새로운 것을 만들지 않습니다.
+                  <br>저의 디자인은 모방에서 출발하되, 조합으로 완성합니다.
+                  <br>디자인은 예술이 아니라, 선택을 설계하는 일이기 때문입니다.
+                </p>
+                <p>
+                  저는, 이미 증명된 좋은 디자인을 해석하고 재구성하여,
+                  <br>선택받기 위해 치밀하게 계산된 결과물을 만듭니다.
+                </p>
+
+                <div style="display: none;">
+                  <br>아름다움은 목적이 아닌 수단이며, 선택받기 위해 치밀하게 계산된 결과물입니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <div id="Experience-Project">
+
+          <div class="marquee-container">
+            <div class="marquee-track">
+              <span>Experience</span>
+              <span>Web Design</span>
+              <span>UI / UX Design</span>
+              <span>Branding & Detailed Pages</span>
+              <span>Experience</span>
+              <span>Web Design</span>
+              <span>UI / UX Design</span>
+              <span>Branding & Detailed Pages</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="web-tit">Web Design</h3>
+          <div class="web-project-box">
+            <article class="web-project" id="hansamall">
+              <a href="hanssem/index.html"><img src="images/web-design/7-lcdcseoul.jpg" alt="웹디자인"></a>
+
+              <div>
+                <h4><a href="hanssem/index.html">LCDC SEOUL</a></h4>
+                <ul class="section4-detail-info">
+                  <li>
+                    <span>기간</span>
+                    <p>2025. 04</p>
+                  </li>
+                  <li>
+                    <span>사용 툴</span>
+                    <p>
+                      HTML, CSS, jQuery,<br>
+                      Photoshop, Figma,<br>
+                      Illustrator
+                    </p>
+                  </li>
+                </ul>
+
+                <div>
+                  <a href="https://store.hanssem.com/">ORIGINAL</a>
+                  <a href="hanssem/index.html">REDESIGN
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="web-project" id="gingerbear">
+              <a href="ginger-bear/index.html"><img src="images/web-design/8-emart.jpg" alt="웹디자인"></a>
+
+              <div>
+                <h4><a href="ginger-bear/index.html">이마트몰</a></h4>
+
+                <ul class="section4-detail-info">
+                  <li>
+                    <span>기간</span>
+                    <p>2025. 05</p>
+                  </li>
+                  <li>
+                    <span>사용 툴</span>
+                    <p>
+                      HTML, CSS, jQuery,<br>
+                      Photoshop, Figma,<br>
+                      Illustrator
+                    </p>
+                  </li>
+                </ul>
+
+                <div>
+                  <a href="ginger-bear/index.html">VIEW MORE</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="web-project-box">
+            <article class="web-project" id="hansamall">
+              <a href="hanssem/index.html"><img src="images/web-design/7-lcdcseoul.jpg" alt="웹디자인"></a>
+
+              <div>
+                <h4><a href="hanssem/index.html">LCDC SEOUL</a></h4>
+                <ul class="section4-detail-info">
+                  <li>
+                    <span>기간</span>
+                    <p>2025. 04</p>
+                  </li>
+                  <li>
+                    <span>사용 툴</span>
+                    <p>
+                      HTML, CSS, jQuery,<br>
+                      Photoshop, Figma,<br>
+                      Illustrator
+                    </p>
+                  </li>
+                </ul>
+
+                <div>
+                  <a href="https://store.hanssem.com/">ORIGINAL</a>
+                  <a href="hanssem/index.html">REDESIGN
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="web-project" id="gingerbear">
+              <a href="ginger-bear/index.html"><img src="images/web-design/8-emart.jpg" alt="웹디자인"></a>
+
+              <div>
+                <h4><a href="ginger-bear/index.html">이마트몰</a></h4>
+
+                <ul class="section4-detail-info">
+                  <li>
+                    <span>기간</span>
+                    <p>2025. 05</p>
+                  </li>
+                  <li>
+                    <span>사용 툴</span>
+                    <p>
+                      HTML, CSS, jQuery,<br>
+                      Photoshop, Figma,<br>
+                      Illustrator
+                    </p>
+                  </li>
+                </ul>
+
+                <div>
+                  <a href="ginger-bear/index.html">VIEW MORE</a>
+                </div>
+              </div>
+            </article>
+          </div>
+      </section>
+
+
+      <!--======================================== 롤링띠 ========================================-->
+      <div class="jacket">
+        <svg class="curved-marquee" viewBox="0 0 1440 120" aria-label="Curved marquee text">
+          <defs>
+            <path id="customCurve" d="M-100,40 Q500, 300 1540,40" fill="none" stroke="transparent"></path>
+          </defs>
+
+          <text fill="#222" font-weight="bold">
+            <textPath id="marqueeTextPath" href="#customCurve"></textPath>
+          </text>
+        </svg>
+      </div>
+
+      <!--======================================== 그래픽 디자인 ========================================-->
+      <section class="con3">
+        <div class="mainTextBox">
+          <p class="title a"><i>Graphic</i></p>
+          <p class="title b"><i>Design</i></p>
+          <p class="title c"><i>PortFolio</i></p>
+
+          <div class="image-gallery">
+            <img src="images/graphic-design/graphic-design (1).jpg" class="image-item" alt="Image 1">
+            <img src="images/graphic-design/graphic-design (2).jpg" class="image-item" alt="Image 2">
+            <img src="images/graphic-design/graphic-design (3).jpg" class="image-item" alt="Image 3">
+            <img src="images/graphic-design/graphic-design (4).jpg" class="image-item" alt="Image 4">
+          </div>
+        </div>
+
+        <div class="inner">
+          <div class="textBox">
+            <h4>Graphic Design</h4>
+          </div>
+          <ul class="listBox">
+            <li data-color="a">
+              <p class="img"><img src="images/graphic-design/graphic-design (1).jpg" alt=""></p>
+              <h4><span class="a">Title</span><span class="b">2024</span></h4>
+            </li>
+            <li data-color="b">
+              <p class="img"><img src="images/graphic-design/graphic-design (2).jpg" alt=""></p>
+              <h4><span class="a">Title</span><span class="b">2024</span></h4>
+            </li>
+            <li data-color="c">
+              <p class="img"><img src="images/graphic-design/graphic-design (3).jpg" alt=""></p>
+              <h4><span class="a">Title</span><span class="b">2024</span></h4>
+            </li>
+            <li data-color="d">
+              <p class="img"><img src="images/graphic-design/graphic-design (4).jpg" alt=""></p>
+              <h4><span class="a">Title</span><span class="b">2024</span></h4>
+            </li>
+            <li data-color="e">
+              <p class="img"><img src="images/graphic-design/graphic-design (5).jpg" alt=""></p>
+              <h4><span class="a">Title</span><span class="b">2024</span></h4>
+            </li>
+            <li data-color="a">
+              <p class="img"><img src="images/graphic-design/graphic-design (6).jpg" alt=""></p>
+              <h4><span class="a">Title</span><span class="b">2024</span></h4>
+            </li>
+            <li data-color="b">
+              <p class="img"><img src="images/graphic-design/graphic-design (7).jpg" alt=""></p>
+              <h4><span class="a">Title</span><span class="b">2024</span></h4>
+            </li>
+            <li data-color="c">
+              <p class="img"><img src="images/graphic-design/graphic-design (8).jpg" alt=""></p>
+              <h4><span class="a">Title</span><span class="b">2024</span></h4>
+            </li>
+            <li data-color="d">
+              <p class="img"><img src="images/graphic-design/graphic-design (9).jpg" alt=""></p>
+              <h4><span class="a">Title</span><span class="b">2024</span></h4>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!-- cont4 -->
+      <!--END// design-portfolio -->
+    </div>
+
+
+    <!--======================================== 이런거 해보고싶어요 섹션 ========================================-->
+    <section class="con4">
+      <div class="inner">
+        <div class="mainTextBox">
+          <p class="title a"><i>CREATION</i></p>
+          <p class="title b"><i>PRODUCTION</i></p>
+          <div class="in">
+            <video class="box" playinline="" autoplay="" loop="" muted="">
+              <source src="https://cdn.sanity.io/files/u6q95fqm/production/c0594d11b2a34d37493ac112d3cb8d1d315a129e.mp4"
+                type="video/mp4">
+            </video>
+            <p class="title c"><i>DIFFUSION</i></p>
+          </div>
+        </div>
+        <ul class="listBox">
+          <li class="box a">
+            <h2>CREATION</h2>
+            <h3>1</h3>
+            <div class="text">
+              <h4>You have an idea ?<br>We have the method.</h4>
+              <p>There are a thousand and one ways to make a podcast. We help you find yours. Thanks to the editorial
+                and technical expertise of our team, we help you choose the best sound format for your project: the
+                one
+                that will meet your objectives, your desires, and that will make your message shine.</p>
+              <p>Editorial construction, duration, style of narration, choice of voices, dressing, technical needs:
+                together, we give shape to your project.</p>
+            </div>
+          </li>
+          <li class="box b">
+            <h2>PRODUCTION</h2>
+            <h3>2</h3>
+            <div class="text">
+              <h4>You have an idea ?<br>We have the method.</h4>
+              <p>There are a thousand and one ways to make a podcast. We help you find yours. Thanks to the editorial
+                and technical expertise of our team, we help you choose the best sound format for your project: the
+                one
+                that will meet your objectives, your desires, and that will make your message shine.</p>
+              <p>Editorial construction, duration, style of narration, choice of voices, dressing, technical needs:
+                together, we give shape to your project.</p>
+            </div>
+          </li>
+          <li class="box c">
+            <h2>DIFFUSION</h2>
+            <h3>3</h3>
+            <div class="text">
+              <h4>You have an idea ?<br>We have the method.</h4>
+              <p>There are a thousand and one ways to make a podcast. We help you find yours. Thanks to the editorial
+                and technical expertise of our team, we help you choose the best sound format for your project: the
+                one
+                that will meet your objectives, your desires, and that will make your message shine.</p>
+              <p>Editorial construction, duration, style of narration, choice of voices, dressing, technical needs:
+                together, we give shape to your project.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!--======================================== 큐앤에이 ========================================-->
+    <section id="qna">
+      <div class="inner">
+        <div class="box">
+          <section class="qna-wrap">
+            <div class="sect_tit_box">
+              <div class="txt_box">
+                <p class="tit"><span>Q n A</span></p>
+                <p class="sub-tit">
+                  <span>여기까지 읽어주셔서 감사해요. 포트폴리오를 마무리하며 답해요</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="qna-list">
+              <ul class="list">
+                <li class="li active">
+                  <div class="top_logo">
+                    <div><img src="/inc/img/main/award_gdweb.svg" alt=""></div>
+                  </div>
+                  <div class="txt_box">
+                    <p class="tit">
+                      <span class="highlight">Q.</span> 결과물의 기준은 무엇인가요?
+                    </p>
+                    <span>
+                      <span class="highlight">A.</span> 완성도가 아니라 지속 가능성입니다.
+                      <br>한 번 잘 만든 결과물보다, 시간이 지나도 맥락을 잃지 않는 구조를 더 중요하게 봅니다.
+                      <br>트렌드는 소비되지만, 구조는 남습니다.
+                      <br>저는 항상 “이 선택이 3년 뒤에도 합리적인가”를 기준으로 판단합니다.
+                    </span>
+                  </div>
+                </li>
+
+                <li class="li inactive">
+                  <div class="top_logo">
+                    <div>
+                      <img src="/inc/img/main/award_gdweb.svg" alt="">
+                      <img class="and" src="/inc/img/main/award_and.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="txt_box">
+                    <p class="tit">
+                      <span class="highlight">Q.</span> 가장 위험한 순간은 언제라고 생각하나요?
+                    </p>
+                    <span>
+                      <span class="highlight">A.</span> 모두가 “잘했다” 혹은 “충분하다”고 말할 때입니다.
+                      <br>그 순간은 보통 문제 정의가 사라졌다는 신호입니다.
+                      <br>저는 긍정적인 반응보다, 불편한 질문이 나오는 상태를 더 건강하다고 봅니다.
+                    </span>
+                  </div>
+                </li>
+
+                <li class="li inactive">
+                  <div class="top_logo">
+                    <div><img src="/inc/img/main/award_gdweb.svg" alt=""></div>
+                  </div>
+                  <div class="txt_box">
+                    <p class="tit">
+                      <span class="highlight">Q.</span> 본인을 한 문장으로 정의한다면?
+                    </p>
+                    <span>
+                      <span class="highlight">A.</span> 저는 “결정을 미루지 않되, 근거 없이 결정하지 않는 사람”입니다.
+                      <br>속도와 신중함을 양자택일로 보지 않습니다. 충분히 생각한 뒤에는 과감하게 움직입니다.
+                    </span>
+                  </div>
+                </li>
+
+                <li class="li inactive">
+                  <div class="top_logo">
+                    <div><img src="/inc/img/main/award_and.svg" alt=""></div>
+                  </div>
+                  <div class="txt_box">
+                    <p class="tit">
+                      <span class="highlight">Q.</span> 실패를 어떻게 다루나요?
+                    </p>
+                    <span>
+                      <span class="highlight">A.</span> 실패를 감정이 아니라 데이터로 처리합니다.
+                      <br>잘못된 판단은 숨길 대상이 아니라, 다음 판단의 정확도를 높이는 재료라고 생각합니다.
+                      <br>그래서 저는 실패를 빠르게 기록하고, 빠르게 정리합니다.
+                    </span>
+                  </div>
+                </li>
+
+                <li class="li inactive">
+                  <div class="top_logo">
+                    <div><img src="/inc/img/main/award_gdweb.svg" alt=""></div>
+                  </div>
+                  <div class="txt_box">
+                    <p class="tit">
+                      <span class="highlight">Q.</span> 협업에서 가장 중요하게 여기는 태도는 무엇인가요?
+                    </p>
+                    <span>
+                      <span class="highlight">A.</span> 이해받으려 하기 전에, 먼저 이해하려는 태도입니다.
+                      <br>대부분의 충돌은 실력 차이가 아니라 전제 조건의 차이에서 발생합니다.
+                      <br>저는 항상 “이 사람은 어떤 제약 안에서 말하고 있는가”를 먼저 확인하려고 합니다.
+                    </span>
+                  </div>
+                </li>
+
+                <li class="li inactive">
+                  <div class="top_logo">
+                    <div><img src="/inc/img/main/award_and.svg" alt=""></div>
+                  </div>
+                  <div class="txt_box">
+                    <p class="tit">
+                      <span class="highlight">Q.</span> 가장 마음에 드는 작업물은 무엇인가요?
+                    </p>
+                    <span>
+                      <span class="highlight">A.</span> 특정 결과물이 아니라, 과정이 단순해진 순간입니다.
+                      <br>복잡했던 문제를 몇 개의 명확한 선택지로 줄였을 때, 그 자체가 가장 잘 만든 작업이라고 생각합니다.
+                    </span>
+                  </div>
+                </li>
+
+                <li class="li inactive">
+                  <div class="top_logo">
+                    <div><img src="/inc/img/main/award_gdweb.svg" alt=""></div>
+                  </div>
+                  <div class="txt_box">
+                    <p class="tit">
+                      <span class="highlight">Q.</span> 일하면서 가장 자주 던지는 질문은 무엇인가요?
+                    </p>
+                    <span>
+                      <span class="highlight">A.</span> “이 선택을 설명할 수 있는가?”입니다.
+                      <br>설명할 수 없는 결정은 재현도, 확장도 불가능합니다.
+                      <br>저는 항상 다른 사람이 이어서 일해도 이해할 수 있는 선택을 하려고 합니다.
+                    </span>
+                  </div>
+                </li>
+
+                <li class="li inactive">
+                  <div class="top_logo">
+                    <div><img src="/inc/img/main/award_webaward.svg" alt=""></div>
+                  </div>
+                  <div class="txt_box">
+                    <p class="tit">
+                      <span class="highlight">Q.</span> 앞으로 어떤 사람이 되고 싶나요?
+                    </p>
+                    <span>
+                      <span class="highlight">A.</span> 더 많이 만드는 사람이 아니라, 덜 만들고도 더 큰 영향을 주는 사람이 되고 싶습니다.
+                      <br>불필요한 것을 줄이고, 핵심만 남기는 능력이 결국 가장 강력한 경쟁력이라고 믿습니다.
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="logoWrap">
+        <span id="symbol1"><img src="/images/1_intro/icon1.png" alt=""></span>
+        <span id="symbol2"><img src="/images/1_intro/icon7.png" alt=""></span>
+        <span id="symbol3"><img src="/images/1_intro/icon3.png" alt=""></span>
+        <span id="symbol4"><img src="/images/1_intro/icon2.png" alt=""></span>
+        <span id="symbol5"><img src="/images/1_intro/icon5.png" alt=""></span>
+        <span id="symbol6"><img src="/images/1_intro/icon10.png" alt=""></span>
+      </div>
+    </section>
+
+
+
+
+    <!--======================================== 푸터 ========================================-->
+    <section class="con6">
+      <h2>
+        <span>SE:RA's PORTFOLIO</span>
+        <span class="white">Thanks for Watching👀</span>
+        <span>SE:RA's PORTFOLIO</span>
+        <span class="white">Thanks for Watching👀</span>
+        <span>SE:RA's PORTFOLIO</span>
+      </h2>
+
+      <section class="video">
+        <div class="inner">
+          <div class="videowrap">
+            <video autoplay="" muted="" loop="" playinline="">
+              <source src="images/outro-video.mov">
+            </video>
+            <div class="title">
+              <h3>path to <span class="enn">MY DREAM</span></h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="box">
+
+        <div class="textAni">
+          <ul>
+            <li>지금 이 포트폴리오를 보며<br>어떤 인상이 남으셨나요?</li>
+            <li>디자인을 구현할 때,<br>어떤 순서로 생각하는지 궁금하다면?</li>
+            <li>이 결과가 나오기까지 <br>어떤 질문부터 시작했는지 궁금하다면?</li>
+            <li>이 포트폴리오가 <br>‘가능성’처럼 느껴졌다면?</li>
+            <li>나에대해서<br>더 궁금하다면?</li>
+            <li>Contact us</li>
+          </ul>
+          <a href="" class="btn">Contact us</a>
+        </div>
+
+        <div class="mainTextBox">
+          <p class="mainText"><span>나에 대해 궁금한게 생겼다면</span><br />
+            266 Avenue de Lardenne<br />
+            31100 Toulouse
+          </p>
+          <div class="btnBox">
+            <a href="#" class="btn">See Google Maps</a>
+            <a href="#" class="btn">Make an appointment</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+
+</html>
