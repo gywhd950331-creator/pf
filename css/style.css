@@ -217,7 +217,7 @@ header .inner .logo span img{width: 100%;}
 #section2>div>div {
   padding-top: 75px;
   display: flex;
-  gap: 60px;
+  gap: 20px;
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -228,27 +228,19 @@ header .inner .logo span img{width: 100%;}
   animation: fadeInDown 1s ease-out 0.3s forwards;
 }
 
-/* profile-box- div 첫자식 profile-name-box  */
+/* profile-name-box  */
 #section2>div>div>div:first-child {
-  height: 53.64%;
+  width:35%;
+  height: 100%;
   position: relative;
 }
 
 /* 프로필사진 */
 #section2 img[alt="profile-image"] {
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 30px;
-  border: var(--border);
-}
-
-/* 이름 - myname */
-#section2 img[alt="profile-image"]+h3 {
-  color: var(--color, white);
-  text-align: center;
-  font-size: 2.5rem;
-  padding-top: 40px;
-  font-weight: 500;
-  width: 87%;
 }
 
 /* 이름 영문 */
@@ -264,7 +256,7 @@ header .inner .logo span img{width: 100%;}
   grid-template-columns: 63.43% 1fr;
   grid-template-rows: 37.29% 1fr;
   gap: 20px;
-  width: 60%;
+  width: 65%;
 }
 
 /* div-Education,License,Activities 각각 박스스 */
@@ -493,6 +485,21 @@ header .inner .logo span img{width: 100%;}
 }
 
 
+/* ------------------- about me 하단 프로그램 ----------------------- */
+.cloneable { padding: var(--container-padding); justify-content: center; align-items: center; display: flex; position: relative; }
+.cloneable .nav-wrap {pointer-events: none; justify-content: center; align-items: flex-end; display: flex; inset: 0 0 10vh; }
+.cloneable .nav-list { flex-flow: row; justify-content: center; align-items: flex-end; margin-bottom: 0; padding-left: 0; display: flex; font-size: 1.4vw; }
+.cloneable .nav-item { justify-content: center; align-items: center; width: 5em; transition: width .5s cubic-bezier(.16, 1, .3, 1); display: flex; position: relative; }
+.cloneable .nav-item.hover { width: 8em; }
+.cloneable .nav-item.sibling-close { width: 7em; }
+.cloneable .nav-item.sibling-far { width: 6em; }
+.cloneable .nav-item__link { z-index: 1; pointer-events: auto; justify-content: center; align-items: center; width: 100%; height: 100%; padding-left: .5em; padding-right: .5em; display: flex; position: absolute; }
+.cloneable .image { object-fit: contain; width: 100%; }
+.cloneable .nav-item__tooltip { z-index: 0; opacity: 0; white-space: nowrap; border-radius: .25em; padding: .4em .5em; font-size: 1em; transition: transform .5s cubic-bezier(.16, 1, .3, 1), opacity .5s cubic-bezier(.16, 1, .3, 1); position: absolute; top: 0; transform: translate(0, -200%); font-weight: 400; }
+.cloneable .nav-item:hover .nav-item__tooltip { opacity: 1; transform: translate(0px, -300%); }
+
+
+
 /* ------------------- con2 ----------------------- */
 
 :root{
@@ -618,7 +625,7 @@ body{
 
 
 /* ------------------- 말풍선 ----------------------- */
-#bubble-rolling {display: flex; flex-direction: row-reverse; overflow:hidden;}
+#bubble-rolling {display: flex; flex-direction: row-reverse; height: 100vh; align-items: center;}
 #bubble-rolling .bubble-rolling-wrap {width:1680px;}
 #bubble-rolling h2 {font-size:4rem;font-weight:700;letter-spacing:-0.02em;margin:0 0 14px;}
 #bubble-rolling h2 span {    font-family: 'NewYork', serif; font-weight: 300;}
@@ -659,9 +666,6 @@ body{
 
 
 /* ------------------- con2 ----------------------- */
-
-
-/* con2 */
 .con2 .inner{position: relative; padding: 40px 50px;}
 .con2 .mainTextBox{position: relative; padding:100px 0 100px}
 .con2 .mainTextBox span{position: absolute; left: 0; top: 0; font-size: 0.8rem; opacity: 0.8; font-weight:300; letter-spacing: 2px;}
@@ -917,12 +921,7 @@ body{
 }
 
 
-/* con3 */
-
-
-
-
-/* ---------------------section6-흐르는띠------------------------- */
+/* --------------------- con3 포물선 마퀴 ------------------------- */
     .jacket {
       display: flex;
       align-items: center;
@@ -958,16 +957,24 @@ body{
 .image-gallery { display: none; }
 
 /*타이틀*/
-.con3 .mainTextBox {position: relative; margin: 15rem auto 17rem; width: 100%; padding-left: 10rem;}
-.con3 .mainTextBox span {position: absolute; right: 0; top: 0;}
+.con3 .mainTextBox {position: relative; margin: 15rem auto 13rem; width: 100%; padding-left: 10rem;}
 .con3 .mainTextBox .title{position: relative; font-size: 120px; line-height: 1; letter-spacing: -5px; overflow: hidden; text-shadow: 0 0 10px rgba(255, 90, 44); z-index: 1;}
 .con3 .mainTextBox .title i{display: block; font-family: 'NewYork'; line-height: 1.4; letter-spacing: 3px;}
+
+/*서브 타이틀*/
+.con3 .subTextBox {display: flex; justify-content: flex-end; align-items: flex-end; padding-right: 10rem;}
+.con3 .subTextBox .subText {max-width: 620px; font-size: 1.4rem; line-height: 1.65; word-break: auto-phrase; text-align: right;}
+.con3 .subTextBox .subText span {background: rgb(0 0 0 / 15%); padding: 0 3px 0 2px; margin: 0 2px;}
+.con3 .subTextBox .subText p{margin-bottom: 3rem;}
+
 
 .con3 .inner{display: flex; justify-content: space-between;}
 .con3 .textBox{width: 28%;}
 .con3 .textBox h4{font-size: 60px; font-weight: normal; position: -webkit-sticky;position: sticky; top: 50%; transform: translateY(-50%); font-family: 'NewYork', serif;}
 .con3 .listBox{width: 70%; display: flex; justify-content: space-between; flex-wrap: wrap; perspective: 900px; overflow:hidden;}
 /* overfloxw : hidden -> scrollTriger을 작성하면 가로스크롤이 생기기 때문에 이를 가려주기 위해 작성해준다.*/
+
+
 .con3 .listBox li {width: 32.2%; aspect-ratio: 1 / 1;}
 .con3 .listBox li p {aspect-ratio: 1 / 1; border-radius: 1rem; overflow: hidden;}
 .con3 .listBox li .img{background: var(--sub-color);  text-align: center; }
@@ -1012,7 +1019,7 @@ body{
 .video .inner {position :relative; width: 100%; height: 100%; margin:0 auto; padding: 0 5rem;}
 .video .inner .videowrap video {width: 100%; height: 90vh; border-radius: 30px; object-fit: cover; filter: brightness(0.5); }
 .video .inner .videowrap .title {position: absolute; width: 100%; text-align: center; left: 0; top: 50%; transform: translateY(-50%);}
-.video .inner .videowrap .title h3 {font-size: 30px; font-weight: 400; color: #fff; opacity: 50%;}
+.video .inner .videowrap .title h3 {font-size: 3rem; line-height:1.5; font-weight: 400; color: #fff; opacity: 50%; letter-spacing: 5px; font-family: 'NewYork', serif;}
 
 /* qna */
 .qna-wrap { padding: 11.71875vw var(--grid_pd3); overflow: hidden; position: relative; margin-bottom: 0; z-index: 20 }
@@ -1101,27 +1108,27 @@ body{
 
 
 
-/* con6 */
-.con6 {padding-top:7rem; background:var(--var-main-color1); overflow: hidden; margin-bottom:0}
-.con6 h2{display: flex; gap: 120px; margin-bottom: 3rem; width:200%}
-.con6 h2 span {font-family: 'NewYork', serif; font-size: 6rem; font-weight: 500; letter-spacing: 5px;  color: #000;}
-.con6 h2 span.white {color: #fff;} 
-.con6 .box {display: flex; justify-content: space-between; background-color: #111; padding: 7rem 5rem 5rem;border-top-right-radius: 3rem; border-top-left-radius: 3rem; height:480px}
- .con6 .box .mainTextBox{font-size: 45px; color: #fff; letter-spacing: -0.02em;line-height: 1.1;}
- .con6 .box .mainTextBox span{font-size: 16px; margin-bottom: 15px;}
- .con6 .box .btnBox{display: flex; gap: 10px;}
- .con6 .box .btnBox .btn{background:#333; color: #fff; }
+/* footer */
+.footer {padding-top:7rem; background:var(--var-main-color1); overflow: hidden; margin-bottom:0}
+.footer h2{display: flex; gap: 120px; margin-bottom: 3rem; width:200%}
+.footer h2 span {font-family: 'NewYork', serif; font-size: 6rem; font-weight: 500; letter-spacing: 5px;  color: #000;}
+.footer h2 span.white {color: #fff;} 
+.footer .box {display: flex; justify-content: space-between; background-color: #111; padding: 7rem 8rem 5rem;border-top-right-radius: 3rem; border-top-left-radius: 3rem;}
+.footer .box .footer-TextBox {font-size: 45px; color: #fff; letter-spacing: -0.02em;line-height: 1.1; text-align: right;}
+.footer .box .footer-TextBox span {font-size: 16px; margin-bottom: 15px;}
+.footer .box .btnBox{display: flex; gap: 10px; justify-content: flex-end;}
+.footer .box .btnBox .btn{background:#333; color: #fff; font-size: 1rem;}
 
 /* 푸터쪽 텍스트 애니메이션 */
-.con6 .textAni{position: relative;}
-.con6 .textAni::before{content: ''; width: 20px; height: 20px; border-radius: 100%; background: var(--var-main-color1); position: absolute; left: -10px; top: 5px; animation: opa linear 1.8s 0s infinite; }
+.footer .textAni{position: relative;}
+.footer .textAni::before{content: ''; width: 20px; height: 20px; border-radius: 100%; background: var(--var-main-color1); position: absolute; left: -10px; top: 5px; animation: opa linear 1.3s 0s infinite; }
 @keyframes opa{
     0%{opacity: 0;}
     30%{opacity: 1;}
     80%{opacity: 1;}
     100%{opacity: 0;}
 }
-.con6 .textAni ul{position: relative; display: grid; overflow: hidden; z-index: 1;}
-.con6 .textAni li{grid-row-start: 1; grid-column-start: 1; font-size: 2rem; line-height: 1.75;opacity: 0;}
+.footer .textAni ul{position: relative; display: grid; overflow: hidden; z-index: 1;}
+.footer .textAni li{grid-row-start: 1; grid-column-start: 1; font-size: 2rem; line-height: 1.75; font-weight: 600; opacity: 0;}
 
 

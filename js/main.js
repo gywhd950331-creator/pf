@@ -1,4 +1,4 @@
-//====================================================================== 메인 포지션 롤링 ======================================================================
+// 메인 포지션 텍스트 롤링 ======================================================================
 document.addEventListener('DOMContentLoaded', function () {
     const pauseMs = 3000;  // 멈춰있는 시간
     const moveMs = 1500;  // 이동하는 시간
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 03 공통,  .subText p ======================================================================
+    // 디자인 포트폴리오 서브 타이틀 ======================================================================
     gsap.utils.toArray('.con2 .subText').forEach((box) => {
     const targets = box.querySelectorAll('p'); 
     if (!targets.length) return;
@@ -149,8 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.2 
     }, 0);
     });
-
-
     
 
     // -----------------section2------------------------------------------------
@@ -184,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     observeDirectionReset('#section2>div>h2', 'active4', 1);
     observeDirectionReset('#section2>div>div', 'active5', 0.3);
     observeDirectionReset('.basic-information', 'active6', 0.3);
+
 
     // -----------------section4-----------------------------------------------
     const targetText9 = document.querySelector('#section4 h3');
@@ -246,7 +245,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 06 con3 ======================================================================
+    // 그래픽 디자인 포트폴리오 서브 타이틀 ======================================================================
+    gsap.utils.toArray('.con3 .subText').forEach((box) => {
+    const targets = box.querySelectorAll('p'); 
+    if (!targets.length) return;
+
+    gsap.set(targets, { y: 300, opacity: 0 }); 
+
+    gsap.timeline({
+        scrollTrigger: {
+        trigger: box,                
+        start: 'top 50%',             
+        toggleActions: 'restart none none reverse', 
+        }
+    })
+    .to(targets, {
+        y: 0,
+        opacity: 1,
+        ease: 'power3.out',
+        duration: 0.6,
+        stagger: 0.2 
+    }, 0);
+    });
+
+
+    //  그래픽 디자인 리스트 ======================================================================
     gsap.utils.toArray('.con3 .listBox li').forEach((selector, t) => {
         ScrollTrigger.create({
             trigger: selector,
@@ -257,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         });
     });
+
 
     // qna ======================================================================
     gsap.timeline({
@@ -269,21 +293,21 @@ document.addEventListener('DOMContentLoaded', () => {
     })
         .to('.logoWrap', { top: '40%', ease: 'none', duration: 5 }, 0);
 
-    // 땡큐폴 와칭 비디오랩 con6 h2 ======================================================================
+    // 땡큐폴 와칭 비디오랩  ======================================================================
     gsap.timeline({
         scrollTrigger: {
-            trigger: '.con6 h2',
+            trigger: '.footer h2',
             start: 'top bottom',
             end: '0% 0%',
             scrub: 1,
         }
     })
-        .to('.con6 h2', { x: () => window.innerWidth * -0.6, y: 0, z: 0, ease: 'none' }, 0);
+        .to('.footer h2', { x: () => window.innerWidth * -0.6, y: 0, z: 0, ease: 'none' }, 0);
 
 
 
     // 푸터 질문 문구 페이드 인업 ======================================================================
-    const textAniList = document.querySelectorAll('.con6 .textAni li');
+    const textAniList = document.querySelectorAll('.footer .textAni li');
     const textAni = gsap.timeline({ repeat: -1 });
 
     textAniList.forEach((li) => {
@@ -297,6 +321,39 @@ document.addEventListener('DOMContentLoaded', () => {
     ScrollTrigger.refresh();
 });
 
+
+// about me 하단 로고 ======================================================================
+document.addEventListener("DOMContentLoaded", () => {
+  // Select all .nav-item elements
+  const navItems = document.querySelectorAll('.nav-item');
+  // Helper function to add/remove a class to a sibling at a given offset
+  const toggleSiblingClass = (items, index, offset, className, add) => {
+    const sibling = items[index + offset];
+    if (sibling) {
+      sibling.classList.toggle(className, add);
+    }
+  };
+  // Event listeners to toggle classes on hover
+  navItems.forEach((item, index) => {
+    item.addEventListener('mouseenter', () => {
+      item.classList.add('hover'); // Add .hover to current item
+      // Toggle classes for siblings
+      toggleSiblingClass(navItems, index, -1, 'sibling-close', true); // Previous sibling
+      toggleSiblingClass(navItems, index, 1, 'sibling-close', true);  // Next sibling
+      toggleSiblingClass(navItems, index, -2, 'sibling-far', true);   // Previous-previous sibling
+      toggleSiblingClass(navItems, index, 2, 'sibling-far', true);    // Next-next sibling
+    });
+    item.addEventListener('mouseleave', () => {
+      item.classList.remove('hover'); // Remove .hover from current item
+      // Toggle classes for siblings
+      toggleSiblingClass(navItems, index, -1, 'sibling-close', false); // Previous sibling
+      toggleSiblingClass(navItems, index, 1, 'sibling-close', false);  // Next sibling
+      toggleSiblingClass(navItems, index, -2, 'sibling-far', false);   // Previous-previous sibling
+      toggleSiblingClass(navItems, index, 2, 'sibling-far', false);    // Next-next sibling
+    });
+  });
+});
+
 // 그래픽 디자인 이미지 트레일러 ======================================================================
 document.addEventListener("DOMContentLoaded", () => {
     const trailer = document.querySelector(".con3 .mainTextBox");
@@ -308,8 +365,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let lastMousePos = { x: 0, y: 0 };
     let lastImageTime = Date.now();
 
-    const movementThreshold = 120; // 마지막 이미지가 생성된 위치에서 최소 몇 px 이상 이동해야 새 이미지를 만들지
-    const delayBetween = 80;
+    const movementThreshold = 180; // 마지막 이미지가 생성된 위치에서 최소 몇 px 이상 이동해야 새 이미지를 만들지
+    const delayBetween = 100;
 
     function createImageTrail(e) {  // mainTextBox 기준 좌표로 변환
         const rect = trailer.getBoundingClientRect();
