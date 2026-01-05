@@ -1,3 +1,69 @@
+// 커스텀 커서 ======================================================================
+document.addEventListener("DOMContentLoaded", () => {
+  class CustomCursor {
+    constructor() {
+      this.cursor = {
+        element: document.querySelector("#custom-cursor"),
+        pos: { x: window.innerWidth / 2, y: window.innerHeight / 2 },
+        speed: 0.15,  //커스텀 커서 속도
+      };
+
+      this.cursor.mouse = { x: this.cursor.pos.x, y: this.cursor.pos.y };
+      this.xSet, this.ySet, this.dt;
+
+      this.links = document.querySelectorAll("[custom-cursor-ani]");  //해당 선택자 존재시, 커서 애니메이션
+
+      this.animate();
+      this.events();
+    }
+
+    animate() {
+      gsap.set(this.cursor.element, { xPercent: -50, yPercent: -50 });
+
+      this.xSet = gsap.quickSetter(this.cursor.element, "x", "px");
+      this.ySet = gsap.quickSetter(this.cursor.element, "y", "px");
+
+      window.addEventListener("mousemove", (e) => {
+        this.cursor.mouse.x = e.x;
+        this.cursor.mouse.y = e.y;
+      });
+
+      gsap.ticker.add(() => {
+        this.dt =
+          1.0 -
+          Math.pow(1.0 - this.cursor.speed, gsap.ticker.deltaRatio());
+        this.cursor.pos.x +=
+          (this.cursor.mouse.x - this.cursor.pos.x) * this.dt;
+        this.cursor.pos.y +=
+          (this.cursor.mouse.y - this.cursor.pos.y) * this.dt;
+        this.xSet(this.cursor.pos.x);
+        this.ySet(this.cursor.pos.y);
+      });
+    }
+
+    events() {
+      const animation = gsap.fromTo(
+        this.cursor.element,
+        { scale: 1 },
+        {
+          scale: 2.5,
+          duration: 0.35,
+          ease: "power4.inOut",
+          paused: true,
+        }
+      );
+
+      this.links.forEach((link) => {
+        link.addEventListener("mouseenter", () => animation.play());
+        link.addEventListener("mouseleave", () => animation.reverse());
+      });
+    }
+  }
+
+  new CustomCursor();
+});
+
+
 // 메인 포지션 텍스트 롤링 ======================================================================
 document.addEventListener('DOMContentLoaded', function () {
     const pauseMs = 3000;  // 멈춰있는 시간
@@ -56,8 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
 //====================================================================== GSAP ======================================================================
 
 
@@ -86,28 +150,50 @@ document.addEventListener('DOMContentLoaded', () => {
             // markers: true,
         }
     })
-        .to('.logoWrap #symbol1', { x: -150, y: 250, rotate: 20, opacity: 0.5, ease: 'none', duration: 5 }, 0)
-        .to('.logoWrap #symbol2', { x: -30, y: 150, rotate: -10, opacity: 0.5, ease: 'none', duration: 5 }, 0)
-        .to('.logoWrap #symbol3', { x: 0, y: 400, rotate: -10, opacity: 0.5, ease: 'none', duration: 5 }, 0)
-        .to('.logoWrap #symbol4', { x: 50, y: 300, rotate: 10, opacity: 0.5, ease: 'none', duration: 5 }, 0)
-        .to('.logoWrap #symbol5', { x: 100, y: 100, rotate: -10, opacity: 0.5, ease: 'none', duration: 5 }, 0)
-        .to('.logoWrap #symbol6', { x: 50, y: 400, rotate: 20, opacity: 0.5, ease: 'none', duration: 5 }, 0);
+
+    .to('.logoWrap #symbol1', { x: -150, y: 250, rotate: 20, opacity: 0.5, ease: 'none', duration: 5 }, 0)
+    .to('.logoWrap #symbol2', { x: -30, y: 150, rotate: -10, opacity: 0.5, ease: 'none', duration: 5 }, 0)
+    .to('.logoWrap #symbol3', { x: 0, y: 400, rotate: -10, opacity: 0.5, ease: 'none', duration: 5 }, 0)
+    .to('.logoWrap #symbol4', { x: 50, y: 300, rotate: 10, opacity: 0.5, ease: 'none', duration: 5 }, 0)
+    .to('.logoWrap #symbol5', { x: 100, y: 100, rotate: -10, opacity: 0.5, ease: 'none', duration: 5 }, 0)
+    .to('.logoWrap #symbol6', { x: 50, y: 400, rotate: 20, opacity: 0.5, ease: 'none', duration: 5 }, 0);
 
 
-    // design-portfolio 배경 색상 변경 ======================================================================
+
+    // design-portfolio 배경 색상 변경 =========================================================
     const designPortfolioBgChange = document.querySelector('#design-portfolio');
     if (designPortfolioBgChange) {
-        ScrollTrigger.create({
-            trigger: designPortfolioBgChange,
-            start: 'top 50%',
-            end: 'bottom 80%',
-            onEnter: () => designPortfolioBgChange.classList.add('background-reverse'),
-            onEnterBack: () => designPortfolioBgChange.classList.add('background-reverse'),
-            onLeave: () => designPortfolioBgChange.classList.remove('background-reverse'),
-            onLeaveBack: () => designPortfolioBgChange.classList.remove('background-reverse'),
-            // markers: true,
-        });
+    ScrollTrigger.create({
+        trigger: designPortfolioBgChange,
+        start: 'top 50%',
+        end: 'bottom 80%',
+        onEnter: () => designPortfolioBgChange.classList.add('background-reverse'),
+        onEnterBack: () => designPortfolioBgChange.classList.add('background-reverse'),
+        onLeave: () => designPortfolioBgChange.classList.remove('background-reverse'),
+        onLeaveBack: () => designPortfolioBgChange.classList.remove('background-reverse'),
+        // markers: true,
+    });
     }
+
+    // graphic-design 기준 배경 변경 =========================================================
+    const graphicDesign = document.querySelector('.graphic-design');
+    if (graphicDesign && designPortfolioBgChange) {
+    ScrollTrigger.create({
+        trigger: graphicDesign,
+        start: 'top 50%',
+        end: 'bottom 50%',
+        onEnter: () =>
+        designPortfolioBgChange.classList.add('background-reverse2'),
+        onEnterBack: () =>
+        designPortfolioBgChange.classList.add('background-reverse2'),
+        onLeave: () =>
+        designPortfolioBgChange.classList.remove('background-reverse2'),
+        onLeaveBack: () =>
+        designPortfolioBgChange.classList.remove('background-reverse2'),
+        // markers: true,
+    });
+    }
+
 
     // 디자인 포트폴리오 타이틀 ======================================================================
     gsap.utils.toArray('.con2 .mainTextBox').forEach((box) => {
@@ -212,12 +298,33 @@ document.addEventListener('DOMContentLoaded', () => {
         targetText10.forEach((box) => observerText10.observe(box));
     }
 
-    // 05 con4 ======================================================================
-    gsap.utils.toArray('.con4 .listBox .box').forEach((selector) => {
+
+    // Next-Step 도달 시 bg-change 적용 ==============================================
+    const nextStepSection = document.querySelector('.Next-Step');
+
+    if (nextStepSection) {
+    ScrollTrigger.create({
+        trigger: nextStepSection,
+        start: 'top 50%',
+        onEnter: () =>
+        nextStepSection.classList.add('bg-change'),
+        onEnterBack: () =>
+        nextStepSection.classList.add('bg-change'),
+        onLeave: () =>
+        nextStepSection.classList.remove('bg-change'),
+        onLeaveBack: () =>
+        nextStepSection.classList.remove('bg-change'),
+        // markers: true,
+    });
+    }
+
+
+    // Next-Step 리스트 박스 ======================================================================
+    gsap.utils.toArray('.Next-Step .listBox .box').forEach((selector) => {
         gsap.timeline({
             scrollTrigger: {
                 trigger: selector,
-                start: '0% 20%',
+                start: '0% 10%',
                 end: '0% 0%',
                 scrub: 1,
             }
@@ -228,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // 그래픽 디자인 타이틀 ======================================================================
-    gsap.utils.toArray('.con3 .mainTextBox').forEach((box) => {
+    gsap.utils.toArray('.graphic-design .mainTextBox').forEach((box) => {
         const targets = box.querySelectorAll('.title i');
         if (!targets.length) return;
 
@@ -246,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // 그래픽 디자인 포트폴리오 서브 타이틀 ======================================================================
-    gsap.utils.toArray('.con3 .subText').forEach((box) => {
+    gsap.utils.toArray('.graphic-design .subText').forEach((box) => {
     const targets = box.querySelectorAll('p'); 
     if (!targets.length) return;
 
@@ -270,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     //  그래픽 디자인 리스트 ======================================================================
-    gsap.utils.toArray('.con3 .listBox li').forEach((selector, t) => {
+    gsap.utils.toArray('.graphic-design .listBox li').forEach((selector, t) => {
         ScrollTrigger.create({
             trigger: selector,
             start: 'top bottom',
@@ -293,6 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
         .to('.logoWrap', { top: '40%', ease: 'none', duration: 5 }, 0);
 
+        
     // 땡큐폴 와칭 비디오랩  ======================================================================
     gsap.timeline({
         scrollTrigger: {
@@ -356,8 +464,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 그래픽 디자인 이미지 트레일러 ======================================================================
 document.addEventListener("DOMContentLoaded", () => {
-    const trailer = document.querySelector(".con3 .mainTextBox");
-    const images = document.querySelectorAll(".con3 .image-gallery .image-item");
+    const trailer = document.querySelector(".graphic-design .mainTextBox");
+    const images = document.querySelectorAll(".graphic-design .image-gallery .image-item");
 
     if (!trailer || images.length === 0) return;  // 방어 코드: 요소가 없으면 중단
 
