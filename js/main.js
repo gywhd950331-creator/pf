@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         this.cursor.element,
         { scale: 1 },
         {
-          scale: 2.5,
+          scale: 4,
           duration: 0.35,
           ease: "power4.inOut",
           paused: true,
@@ -62,6 +62,128 @@ document.addEventListener("DOMContentLoaded", () => {
 
   new CustomCursor();
 });
+
+
+
+
+/*
+// 커서 별 파티클 ======================================================================
+let start = performance.now();
+
+const originPosition = { x: 0, y: 0 };
+
+const last = {
+  starTimestamp: start,
+  starPosition: originPosition,
+};
+
+const state = {
+  pointer: originPosition,   // page 기준 좌표
+  hasPointer: false,
+  running: true,
+};
+
+const config = {
+  starAnimationDuration: 1500,
+  minimumTimeBetweenStars: 250,
+  minimumDistanceBetweenStars: 75,
+  colors: ["249 146 253", "252 254 255"],
+  sizes: ["1.4rem", "1rem", "0.6rem"],
+  animations: ["fall-1", "fall-2", "fall-3"]
+};
+
+let count = 0;
+
+const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+const selectRandom = items => items[rand(0, items.length - 1)];
+
+const withUnit = (value, unit) => `${value}${unit}`;
+const px = value => withUnit(value, "px");
+const ms = value => withUnit(value, "ms");
+
+const calcDistance = (a, b) => {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  return Math.sqrt(dx * dx + dy * dy);
+};
+
+const appendElement = el => document.body.appendChild(el);
+const removeElement = (el, delay) => setTimeout(() => {
+  if (el && el.parentNode) el.parentNode.removeChild(el);
+}, delay);
+
+const createStar = position => {
+  const star = document.createElement("span");
+  const color = selectRandom(config.colors);
+
+  star.className = "star";
+  star.style.left = px(position.x);
+  star.style.top = px(position.y);
+  star.style.fontSize = selectRandom(config.sizes);
+  star.style.color = `rgb(${color})`;
+  star.textContent = "✨";
+  star.style.textShadow = `0px 0px 1.5rem rgb(${color} / 0.5)`;
+
+  star.style.animationName =
+    config.animations[count++ % config.animations.length];
+  star.style.animationDuration = ms(config.starAnimationDuration);
+
+  appendElement(star);
+  removeElement(star, config.starAnimationDuration);
+};
+
+const updateLastStar = (position, now) => {
+  last.starTimestamp = now;
+  last.starPosition = position;
+};
+
+const shouldCreateStar = (position, now) => {
+  const farEnough =
+    calcDistance(last.starPosition, position) >= config.minimumDistanceBetweenStars;
+  const longEnough =
+    (now - last.starTimestamp) > config.minimumTimeBetweenStars;
+
+  return farEnough || longEnough;
+};
+
+// 포인터 이벤트: pageX / pageY 사용
+const setPointerFromEvent = (x, y) => {
+  state.pointer = { x, y };
+  state.hasPointer = true;
+};
+
+window.addEventListener("mousemove", (e) => {
+  setPointerFromEvent(e.pageX, e.pageY);
+}, { passive: true });
+
+window.addEventListener("touchmove", (e) => {
+  const t = e.touches && e.touches[0];
+  if (!t) return;
+  setPointerFromEvent(t.pageX, t.pageY);
+}, { passive: true });
+
+document.body.addEventListener("mouseleave", () => {
+  state.hasPointer = false;
+}, { passive: true });
+
+// requestAnimationFrame 루프
+const tick = (now) => {
+  if (state.running && state.hasPointer) {
+    const pos = state.pointer;
+
+    if (shouldCreateStar(pos, now)) {
+      createStar(pos);
+      updateLastStar(pos, now);
+    }
+  }
+
+  requestAnimationFrame(tick);
+};
+
+requestAnimationFrame(tick);
+
+*/
+
 
 
 // 메인 포지션 텍스트 롤링 ======================================================================
@@ -120,6 +242,159 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
+
+
+// 다양한 경험 MIX 섹션 ======================================================================
+gsap.registerPlugin(ScrollTrigger);
+
+const section = document.querySelector("#mixVision");
+const bg = section.querySelector(".bg");
+const word01 = section.querySelector(".word01");
+const word02 = section.querySelector(".word02");
+
+/* ------------------------------------------------------------------
+   시작 clip-path 값 계산 (여기 숫자 키우면 시작 이미지 더 작아짐)
+------------------------------------------------------------------ */
+function getStartInsetPx(){
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+
+  const topBottom = Math.max(120, Math.min(220, vh * 0.45)); // 초기 높이 (맨 뒤 숫자 높을 수록 Clip-path 작아짐)
+  const leftRight = Math.max(160, Math.min(320, vw * 0.45)); // 초기 넓이 (맨 뒤 숫자 높을 수록 Clip-path 작아짐)
+
+  return { t: topBottom, r: leftRight, b: topBottom, l: leftRight };
+}
+
+/* ------------------------------------------------------------------
+   bg 중앙 정렬을 GSAP가 관리 (pin 시 위치 튐 방지)
+------------------------------------------------------------------ */
+
+// bg 중앙 정렬: CSS transform 대신 GSAP로 고정
+gsap.set(bg, {
+  left: "50%",
+  top: "50%",
+  xPercent: -50,
+  yPercent: -50
+});
+
+function applyStartClip(){
+  const ins = getStartInsetPx();
+  gsap.set(bg, { clipPath: `inset(${ins.t}px ${ins.r}px ${ins.b}px ${ins.l}px)` });
+}
+applyStartClip();
+
+// 텍스트 width 측정(리빌용)
+function getAutoWidthPx(el){
+  const prev = { width: el.style.width, position: el.style.position, visibility: el.style.visibility };
+  el.style.width = "auto";
+  el.style.position = "absolute";
+  el.style.visibility = "hidden";
+  const w = el.getBoundingClientRect().width;
+  el.style.width = prev.width;
+  el.style.position = prev.position;
+  el.style.visibility = prev.visibility;
+  return w;
+}
+const w1 = getAutoWidthPx(word01);
+const w2 = getAutoWidthPx(word02);
+
+gsap.set([word01, word02], { width: 0, opacity: 0 });
+
+// refresh 시에도 clip 시작값 재적용
+function clipStr(){
+  const ins = getStartInsetPx();
+  return `inset(${ins.t}px ${ins.r}px ${ins.b}px ${ins.l}px)`;
+}
+
+// ====== “턱턱 끊김” 방지를 위한 HOLD 구간 길이 ======
+// 값이 클수록: pin 걸린 후/끝나기 전 “정지 구간”이 길어짐
+const HOLD_IN = 3;   // 시작 직후 멈춤
+const HOLD_MID = 0;  // word01 후 멈춤
+const HOLD_OUT = 3;  // 끝나기 전 멈춤
+
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#mixVision",
+    start: "top top",
+    end: "+=3000",       // hold가 늘었으니 스크롤 길이도 같이 늘리는 게 자연스러움
+    scrub: 1,
+    pin: true,
+    anticipatePin: 1,
+    invalidateOnRefresh: true,
+    onRefresh: applyStartClip
+  }
+});
+
+// ✅ 더미 엘리먼트 없이 “빈 tween”으로 hold 만들기
+tl
+.to({}, { duration: HOLD_IN }) // 0) pin 걸린 직후 잠깐 정지(아무 변화 없음)
+
+.fromTo(word01,
+  { width: 0, opacity: 0 },
+  { width: w1, opacity: 1, ease: "power2.out", duration: 8 },
+  ">"
+)
+
+.to({}, { duration: HOLD_MID }) // 1) word01 끝난 뒤 잠깐 정지
+
+.fromTo(bg,
+  { clipPath: clipStr },
+  { clipPath: "inset(0px 0px 0px 0px)", ease: "none", duration: 8 },
+  ">"
+)
+
+.fromTo(word02,
+  { width: 0, opacity: 0 },
+  { width: w2, opacity: 1, ease: "power2.out", duration: 8 },
+  "<0.2"
+)
+
+.to({}, { duration: HOLD_OUT }); // 2) 모든 연출 끝난 뒤 잠깐 정지(핀 풀리기 전 완충)
+
+window.addEventListener("load", () => ScrollTrigger.refresh());
+
+
+
+
+
+
+// 다양한 경험 리스트 섹션 ======================================================================
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to(".inc03_wrap .item01", {
+  scrollTrigger: {
+    trigger: ".inc03_wrap .cont01",
+    start:"-100% top",
+    toggleClass:{targets:'.inc03_wrap .item01',className:'on'},
+    scrub: 2,
+  }
+});
+
+gsap.to(".inc03_wrap .item02", {
+  scrollTrigger: {
+    trigger: ".inc03_wrap .cont02",
+    start:"top top",
+    toggleClass:{targets:'.inc03_wrap .item02',className:'on'},
+    scrub: 2,
+  }
+});
+
+gsap.to(".inc03_wrap .item03", {
+  scrollTrigger: {
+    trigger: ".inc03_wrap .cont03",
+    start:"top top",
+    toggleClass:{targets:'.inc03_wrap .item03',className:'on'},
+    scrub: 2,
+  }
+});
+
+
+
+
+
+
 
 
 //====================================================================== GSAP ======================================================================
@@ -319,21 +594,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Next-Step 리스트 박스 ======================================================================
-    gsap.utils.toArray('.Next-Step .listBox .box').forEach((selector) => {
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: selector,
-                start: '0% 10%',
-                end: '0% 0%',
-                scrub: 1,
-            }
-        })
-            .to(selector, { transform: 'rotateX(-10deg) scale(0.9)', transformOrigin: 'top', filter: 'brightness(0.3)' }, 0);
-    });
-
-
-
     // 그래픽 디자인 타이틀 ======================================================================
     gsap.utils.toArray('.graphic-design .mainTextBox').forEach((box) => {
         const targets = box.querySelectorAll('.title i');
@@ -387,6 +647,22 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         });
     });
+
+
+
+    // Next-Step 리스트 박스 ======================================================================
+    gsap.utils.toArray('.Next-Step .listBox .box').forEach((selector) => {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: selector,
+                start: '0% 5%',
+                end: '0% 0%',
+                scrub: 1,
+            }
+        })
+            .to(selector, { transform: 'rotateX(-5deg) scale(0.9)', transformOrigin: 'top', filter: 'brightness(0.3)' }, 0);
+    });
+
 
 
     // qna ======================================================================
