@@ -496,6 +496,42 @@ html, body { height:100%; margin:0; padding:0; }
 
 
 
+/* ================================================== 경험 섹션 ================================================== */
+::selection {
+  background: #87cd33;
+  color: white;
+}
+.demo-wrapper h1 { font-size: 5rem; }
+.demo-wrapper h2 { font-size: 2rem; }
+
+.demo-wrapper img { width: 100%; height: auto; background: #f0f0f0; display: block; }
+
+.demo-wrapper ul { padding-left: 1rem; list-style: none; }
+
+.demo-wrapper li { flex-shrink: 0; width: clamp(500px, 60vw, 800px); padding-right: 1rem; }
+
+.demo-wrapper header { height: 100vh; }
+.demo-wrapper footer { height: 50vh; }
+
+.demo-wrapper :any-link { color: #4e9815; }
+
+.demo-wrapper .df { display: flex; }
+.demo-wrapper .aic { align-items: center; }
+.demo-wrapper .jcc { justify-content: center; }
+
+.demo-wrapper .loader { position: fixed; inset: 0; background: black; color: white; z-index: 9999; }
+
+.demo-wrapper .demo-wrapper { overflow-x: hidden; }
+
+.demo-wrapper .wrapper { display: flex; }
+
+.demo-wrapper .demo-gallery li {position: relative;}
+.demo-wrapper .demo-gallery li::before {content: '#색다른경험'; padding:10px 20px; background-color: var(--var-main-color1); color: #fff; font-weight: 600; position: absolute; bottom: 10px; right: 10px; border-radius: 100px; font-size: 2rem;}
+
+.demo-wrapper .demo-gallery:not(.last) { padding-bottom: 1rem; }
+
+.demo-wrapper .demo-text .text { font-size: 6rem; line-height: 1; font-weight: 900; white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+
 
 
 

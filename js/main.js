@@ -392,6 +392,58 @@ gsap.to(".inc03_wrap .item03", {
 
 
 
+// 다양한 경험 리스트 섹션 ======================================================================
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const sections = gsap.utils.toArray(".demo-wrapper section");
+
+  sections.forEach((section, index) => {
+    const w = section.querySelector(".wrapper");
+    if (!w) return;
+
+    const isOdd = index % 2 === 1;
+
+    const getValues = () => {
+      const maxTranslate = w.scrollWidth - section.clientWidth;
+      const safeMax = Math.max(0, maxTranslate);
+
+      // 🔁 좌우 방향 반전
+      const xStart = isOdd ? -safeMax : "100%";
+      const xEnd = isOdd ? 0 : -safeMax;
+
+      return { xStart, xEnd };
+    };
+
+    const { xStart, xEnd } = getValues();
+
+    gsap.fromTo(
+      w,
+      { x: xStart },
+      {
+        x: xEnd,
+        ease: "none",
+        invalidateOnRefresh: true,
+        scrollTrigger: {
+          trigger: section,
+          scrub: 1,
+          start: "top bottom",
+          onRefresh: () => {
+            const v = getValues();
+            gsap.set(w, { x: v.xStart });
+          },
+        },
+      }
+    );
+  });
+
+  window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+  });
+
+  setTimeout(() => ScrollTrigger.refresh(), 300);
+});
+
 
 
 
@@ -480,7 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.timeline({
             scrollTrigger: {
                 trigger: box,
-                start: 'top 30%',
+                start: 'top 40%',
                 toggleActions: 'restart none none reverse',
             }
         })
