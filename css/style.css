@@ -36,6 +36,32 @@ section {padding: 100px 0; }
   --var-main-color2:#333bcf;
 }
 
+::selection {
+  background: var(--var-main-color1);
+  color: white;
+}
+
+
+/* 스크롤바 전체 */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* 스크롤바 배경 */
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+/* 잡는 부분 (thumb) */
+::-webkit-scrollbar-thumb {
+  background: var(--var-main-color1);
+  border-radius: 5px;
+}
+
+/* hover 시 */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--var-main-color2);
+}
 
 /* ================================================== 인트로 ================================================== */
 .intro {position: fixed; display:flex; justify-content: center; align-items: center; top: 0; left: 0; width: 100%; height: 100vh; background: #141212; z-index: 9999;}
@@ -425,36 +451,39 @@ html, body { height:100%; margin:0; padding:0; }
 /* ================================================== 경험 리스트 ================================================== */
 
 #atc03{position:relative;height:auto; padding:100px 0}
-#atc03 h2{margin:10px 0;font-size:4rem}
-#atc03 .txt .en{font-size:13px;font-weight:700}
+#atc03 h2{margin:10px 0 3rem;font-size:4rem; font-family: 'NewYork', serif; font-weight: 300;}
+#atc03 .txt .en{font-size: 1.25rem; line-height: 1.75; line-height: 1.75; opacity: 0.5;}
 #atc03 *{word-break:keep-all; color:#fff}
 #atc03 .inc03_wrap{position:relative;display:flex; margin:auto; width:80%; height:auto}
 
 /* left_tit */
 #atc03 .inc03_wrap .txt{position:sticky;top:100px;width:50%;height:100%}
 #atc03 .inc03_wrap .txt ul{margin-top:30px}
-#atc03 .inc03_wrap .txt ul li{position:relative;font-size:2rem; font-weight:700;transition:all .3s}
-#atc03 .inc03_wrap .txt ul li.on{padding-left:50px; transition:all .3s}
+#atc03 .inc03_wrap .txt ul li{position:relative;font-size:2rem; font-weight:700;transition:all .3s; opacity: 0.3;}
+#atc03 .inc03_wrap .txt ul li.on{padding-left:50px; transition:all .3s; opacity: 1;}
 #atc03 .inc03_wrap .txt ul li+li{margin-top:20px}
 #atc03 .inc03_wrap .txt ul .item01.on:after{content:"01.";position:absolute;top:50%;left:0px;transform:translateY(-50%)}
 #atc03 .inc03_wrap .txt ul .item02.on:after{content:"02.";position:absolute;top:50%;left:0px;transform:translateY(-50%)}
 #atc03 .inc03_wrap .txt ul .item03.on:after{content:"03.";position:absolute;top:50%;left:0px;transform:translateY(-50%)}
+#atc03 .inc03_wrap .txt ul .item04.on:after{content:"04.";position:absolute;top:50%;left:0px;transform:translateY(-50%)}
 
 /* right_cont */
 #atc03 .inc03_wrap .cont{width:50%}
 #atc03 .inc03_wrap .cont li+li{padding-top:115px}
-#atc03 .inc03_wrap .cont li .img{width:100%;height:400px; overflow:hidden}
+#atc03 .inc03_wrap .cont li .img{width:100%;height:500px; overflow:hidden}
 #atc03 .inc03_wrap .cont img {width: 100%; height:100%; object-fit: cover;}
 
-#atc03 .inc03_wrap .cont .cont01 .img img{transform:translate(0px , 0px)}
+#atc03 .inc03_wrap .cont .cont01 .img img{transform:translate(0px , 0px); object-position: bottom;}
 #atc03 .inc03_wrap .cont .cont02 .img img{transform:translate(0px , 0px)}
-#atc03 .inc03_wrap .cont .cont03 .img img{transform:translate(0px , 0px)}
+#atc03 .inc03_wrap .cont .cont03 .img img{transform:translate(0px , 0px); object-position: 50% 80%;}
+#atc03 .inc03_wrap .cont .cont04 .img img{transform:translate(0px , 0px)}
+
 #atc03 .inc03_wrap .cont li h3{margin-top:30px; font-size: 2.5rem;}
 #atc03 .inc03_wrap .cont li p{margin-top:30px; line-height: 1.75; font-weight:400; color:#fff; font-size: 1.25rem;;}
-#atc03 .inc03_wrap .cont li a{position:relative;display:block;margin-top:30px;width:max-content;transition:all .3s;font-size:17px;font-weight:300; text-decoration: underline; }
-#atc03 .inc03_wrap .cont li a:after{content:"";position:absolute;bottom:0px;left:0px;width:0px;height:2px;transition:all .3s;background-color:#111}
+#atc03 .inc03_wrap .cont li span {position:relative;display:block;margin-top:30px;width:max-content;transition:all .3s;font-size:17px;font-weight:300;  }
+#atc03 .inc03_wrap .cont li span:after {content:"";position:absolute;bottom:0px;left:0px;width:0px;height:2px;transition:all .3s; background-color:#fff}
 
-#atc03 .inc03_wrap .cont li a:hover:after{width:100%}
+#atc03 .inc03_wrap .cont li span:hover:after {width:100%}
 
 
 
@@ -497,10 +526,7 @@ html, body { height:100%; margin:0; padding:0; }
 
 
 /* ================================================== 경험 섹션 ================================================== */
-::selection {
-  background: #87cd33;
-  color: white;
-}
+
 .demo-wrapper h1 { font-size: 5rem; }
 .demo-wrapper h2 { font-size: 2rem; }
 
@@ -509,9 +535,6 @@ html, body { height:100%; margin:0; padding:0; }
 .demo-wrapper ul { padding-left: 1rem; list-style: none; }
 
 .demo-wrapper li { flex-shrink: 0; width: clamp(500px, 60vw, 800px); padding-right: 1rem; }
-
-.demo-wrapper header { height: 100vh; }
-.demo-wrapper footer { height: 50vh; }
 
 .demo-wrapper :any-link { color: #4e9815; }
 
@@ -522,7 +545,6 @@ html, body { height:100%; margin:0; padding:0; }
 .demo-wrapper .loader { position: fixed; inset: 0; background: black; color: white; z-index: 9999; }
 
 .demo-wrapper .demo-wrapper { overflow-x: hidden; }
-
 .demo-wrapper .wrapper { display: flex; }
 
 .demo-wrapper .demo-gallery li {position: relative;}
@@ -530,8 +552,11 @@ html, body { height:100%; margin:0; padding:0; }
 
 .demo-wrapper .demo-gallery:not(.last) { padding-bottom: 1rem; }
 
+.demo-wrapper .demo-text {height:100vh; display: flex; align-items: center;}
 .demo-wrapper .demo-text .text { font-size: 6rem; line-height: 1; font-weight: 900; white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
 
+.demo-wrapper #opening-experience {justify-content: center; padding: 0;}
+.demo-wrapper #opening-experience .text {font-size: 5rem;}
 
 
 
@@ -959,6 +984,15 @@ html, body { height:100%; margin:0; padding:0; }
 .video .inner .videowrap .title h3 {font-size: 3rem; line-height:1.5; font-weight: 400; color: #fff; opacity: 50%; letter-spacing: 5px; font-family: 'NewYork', serif;}
 
 /* qna */
+
+#qna,
+#qna .inner,
+#qna .inner .box,
+.qna-wrap,
+.qna-layout {
+  overflow: visible !important;
+}
+
 .qna-wrap { padding: 11.71875vw var(--grid_pd3); position: relative; margin-bottom: 0; z-index: 20 }
 
 .qna-wrap .sect_tit_box .tit {width: 100%;  color: var(--var-main-color1); font-size: 5rem; letter-spacing: -5px;}
@@ -992,8 +1026,78 @@ html, body { height:100%; margin:0; padding:0; }
 .qna-wrap .qna-list .list .li.ative .txt_box span {  opacity: 0.6;  margin-top: 1.2em;  font-size: 0.75vw;  line-height: 1.5em;  word-wrap: break-word;  -webkit-box-orient: vertical; text-overflow: ellipsis;  overflow: hidden;  word-break: break-all;}
 
 
+/* ===== Layout (2 columns) ===== */
+.qna-wrap { position: relative; } /* 기존 유지 */
+.qna-layout{
+  display: flex;
+  gap: 3vw;
+  align-items: flex-start;
+}
 
-.qna-wrap .qna-list .list .li.active { height: 16vw; background: rgb(255 255 255 / 10%); color: #fff; }
+/* 30% / 70% */
+.qna-left{ flex: 0 0 30%; }
+.qna-right{ flex: 1 1 70%; }
+
+/* Sticky wrap (title + tabs) */
+.qna-left-inner{
+  position: sticky;
+  top: 120px;              /* 필요하면 조정 */
+  align-self: flex-start;
+}
+
+/* Tabs */
+.qna-tabs{
+  margin-top: 2vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vw;
+}
+
+.qna-tab{
+  text-align: left;
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.qna-tab:hover{
+  border-color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,1);
+}
+
+.qna-tab span {font-weight: 300; font-family: 'NewYork', serif; letter-spacing: 5px;}
+
+.qna-tab.is-active{
+  border-color: rgba(255,255,255,0.85);
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* Panels show/hide */
+.qna-panel.is-active{ display: block; }
+.qna-panel[hidden]{ display: none; }
+
+/* ===== Important fix (typo) ===== */
+/* 기존에 .li.ative 오타 -> 아래처럼 active로 수정 */
+.qna-wrap .qna-list .list .li.active .txt_box span {
+  opacity: 0.6;
+  margin-top: 1.2em;
+  line-height: 1.5em;
+  word-wrap: break-word;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+
+
+.qna-wrap .qna-list .list .li.active {align-items: flex-start; flex-direction: column; height: 16vw; background: rgb(255 255 255 / 10%); color: #fff; }
 
 
 .qna-wrap .qna-list .list .li.active .top_logo { display: flex; margin-bottom: 0.8vw; }
@@ -1018,7 +1122,7 @@ html, body { height:100%; margin:0; padding:0; }
 
 #qna {position: relative; }
 #qna .inner{position: relative;display: flex; flex-direction: column; box-sizing: border-box; z-index: 2;}
-#qna .inner .box{display: flex; flex-direction: column; width:1480px; margin: 0 auto; padding: 100px 80px; flex-grow: 1; background-color: rgba(55,55,55, .4);backdrop-filter: blur(5px); border-radius: 30px;}
+#qna .inner .box{display: flex; flex-direction: column; width:1480px; margin: 0 auto; padding: 100px 80px; flex-grow: 1; background-color: rgba(255,255,255, .15);backdrop-filter: blur(5px); border-radius: 30px;}
 #qna .inner .box .mainTextBox{text-align: center;}
 #qna .inner .box .mainTextBox h2{font-size: 120px; text-transform: uppercase; letter-spacing: -1px ; font-weight: normal; margin-bottom: 30px;}
 #qna .inner .box .mainTextBox p span{opacity: 0.5; display: block;}

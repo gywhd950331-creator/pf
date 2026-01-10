@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
         this.cursor.element,
         { scale: 1 },
         {
-          scale: 4,
-          duration: 0.35,
+          scale: 6,
+          duration: 0.5,
           ease: "power4.inOut",
           paused: true,
         }
@@ -261,15 +261,11 @@ function getStartInsetPx(){
   const vw = window.innerWidth;
   const vh = window.innerHeight;
 
-  const topBottom = Math.max(120, Math.min(220, vh * 0.45)); // 초기 높이 (맨 뒤 숫자 높을 수록 Clip-path 작아짐)
-  const leftRight = Math.max(160, Math.min(320, vw * 0.45)); // 초기 넓이 (맨 뒤 숫자 높을 수록 Clip-path 작아짐)
+  const topBottom = Math.max(120, Math.min(400, vh * 0.8)); // 초기 높이 (맨 뒤 숫자 높을 수록 Clip-path 작아짐)
+  const leftRight = Math.max(160, Math.min(520, vw * 0.8)); // 초기 넓이 (맨 뒤 숫자 높을 수록 Clip-path 작아짐)
 
   return { t: topBottom, r: leftRight, b: topBottom, l: leftRight };
 }
-
-/* ------------------------------------------------------------------
-   bg 중앙 정렬을 GSAP가 관리 (pin 시 위치 튐 방지)
------------------------------------------------------------------- */
 
 // bg 중앙 정렬: CSS transform 대신 GSAP로 고정
 gsap.set(bg, {
@@ -310,9 +306,9 @@ function clipStr(){
 
 // ====== “턱턱 끊김” 방지를 위한 HOLD 구간 길이 ======
 // 값이 클수록: pin 걸린 후/끝나기 전 “정지 구간”이 길어짐
-const HOLD_IN = 3;   // 시작 직후 멈춤
+const HOLD_IN = 2;   // 시작 직후 멈춤
 const HOLD_MID = 0;  // word01 후 멈춤
-const HOLD_OUT = 3;  // 끝나기 전 멈춤
+const HOLD_OUT = 2;  // 끝나기 전 멈춤
 
 const tl = gsap.timeline({
   scrollTrigger: {
@@ -327,7 +323,6 @@ const tl = gsap.timeline({
   }
 });
 
-// ✅ 더미 엘리먼트 없이 “빈 tween”으로 hold 만들기
 tl
 .to({}, { duration: HOLD_IN }) // 0) pin 걸린 직후 잠깐 정지(아무 변화 없음)
 
@@ -391,6 +386,16 @@ gsap.to(".inc03_wrap .item03", {
 });
 
 
+gsap.to(".inc03_wrap .item04", {
+  scrollTrigger: {
+    trigger: ".inc03_wrap .cont04",
+    start:"top top",
+    toggleClass:{targets:'.inc03_wrap .item04',className:'on'},
+    scrub: 2,
+  }
+});
+
+
 
 // 다양한 경험 리스트 섹션 ======================================================================
 document.addEventListener("DOMContentLoaded", () => {
@@ -402,47 +407,57 @@ document.addEventListener("DOMContentLoaded", () => {
     const w = section.querySelector(".wrapper");
     if (!w) return;
 
+    const isOpening = section.id === "opening-experience";
     const isOdd = index % 2 === 1;
 
     const getValues = () => {
       const maxTranslate = w.scrollWidth - section.clientWidth;
       const safeMax = Math.max(0, maxTranslate);
 
-      // 🔁 좌우 방향 반전
-      const xStart = isOdd ? -safeMax : "100%";
-      const xEnd = isOdd ? 0 : -safeMax;
+      // opening은 텍스트라 safeMax가 0일 확률이 높으니 "보장 거리"를 준다
+      const endDistance = isOpening
+        ? Math.max(window.innerWidth, 800) // 핀 유지 길이(조절)
+        : safeMax;
 
-      return { xStart, xEnd };
+      const xStart = isOpening ? "100%" : (isOdd ? -safeMax : "100%");
+      const xEnd   = isOpening ? 0      : (isOdd ? 0 : -safeMax);
+
+      return { xStart, xEnd, endDistance };
     };
-
-    const { xStart, xEnd } = getValues();
 
     gsap.fromTo(
       w,
-      { x: xStart },
+      { x: () => getValues().xStart },
       {
-        x: xEnd,
+        x: () => getValues().xEnd,
         ease: "none",
         invalidateOnRefresh: true,
         scrollTrigger: {
           trigger: section,
           scrub: 1,
-          start: "top bottom",
+
+          pin: isOpening,
+
+          // ✅ 100vh에서 안정적으로 "멈춘 느낌" 만드는 스타트
+          start: isOpening ? "top top" : "top bottom",
+
+          // ✅ opening은 반드시 스크롤을 소비할 end가 있어야 핀 유지됨
+          end: isOpening ? () => `+=${getValues().endDistance}` : undefined,
+
+          anticipatePin: isOpening ? 1 : 0,
+
           onRefresh: () => {
-            const v = getValues();
-            gsap.set(w, { x: v.xStart });
+            gsap.set(w, { x: getValues().xStart });
           },
+
+          // 필요하면 디버깅
+          // markers: isOpening,
         },
       }
     );
   });
-
-  window.addEventListener("load", () => {
-    ScrollTrigger.refresh();
-  });
-
-  setTimeout(() => ScrollTrigger.refresh(), 300);
 });
+
 
 
 
@@ -930,7 +945,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
+/*
 //====================================================================== Q n A ======================================================================
 document.addEventListener('DOMContentLoaded', () => {
     let isAnimating = false;
@@ -952,6 +967,50 @@ document.addEventListener('DOMContentLoaded', () => {
             isAnimating = false;
         }, 150);
     });
+});
+*/
+
+//====================================================================== Q n A (Tabs + Hover) ======================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  let isAnimating = false;
+
+  // 1) Tab switching
+  $(document).on('click', '.qna-tab', function () {
+    const target = $(this).data('qna-tab');
+
+    // tabs ui
+    $('.qna-tab').removeClass('is-active').attr('aria-selected', 'false');
+    $(this).addClass('is-active').attr('aria-selected', 'true');
+
+    // panels
+    $('.qna-panel').removeClass('is-active').attr('hidden', true);
+    const $panel = $(`.qna-panel[data-qna-panel="${target}"]`);
+    $panel.addClass('is-active').removeAttr('hidden');
+
+    // optional: 탭 바꿀 때 첫 번째 li를 active로 리셋 
+    const $lis = $panel.find('.qna-list .li');
+    $lis.removeClass('active inactive');
+    $lis.each(function (idx) {
+      $(this).addClass(idx === 0 ? 'active' : 'inactive');
+    });
+  });
+
+  // 2) Hover interaction (same behavior, scoped to current panel)
+  $(document).on('mouseenter', '.qna-panel.is-active .qna-list .li', function () {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const $current = $(this);
+    const $all = $current.closest('.qna-list').find('.li');
+
+    // 현재 것만 active, 나머지는 inactive
+    $all.not($current).removeClass('active').addClass('inactive');
+    $current.removeClass('inactive').addClass('active');
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 150);
+  });
 });
 
 
