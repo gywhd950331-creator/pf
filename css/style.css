@@ -480,10 +480,10 @@ html, body { height:100%; margin:0; padding:0; }
 
 #atc03 .inc03_wrap .cont li h3{margin-top:30px; font-size: 2.5rem;}
 #atc03 .inc03_wrap .cont li p{margin-top:30px; line-height: 1.75; font-weight:400; color:#fff; font-size: 1.25rem;;}
-#atc03 .inc03_wrap .cont li span {position:relative;display:block;margin-top:30px;width:max-content;transition:all .3s;font-size:17px;font-weight:300;  }
-#atc03 .inc03_wrap .cont li span:after {content:"";position:absolute;bottom:0px;left:0px;width:0px;height:2px;transition:all .3s; background-color:#fff}
-
-#atc03 .inc03_wrap .cont li span:hover:after {width:100%}
+#atc03 .inc03_wrap .cont li p > span {background:rgb(255 255 255 / 20%); display: inline; font-size: inherit; font-weight: 400; padding: 0 2px; margin: 0 3px;}
+#atc03 .inc03_wrap .cont li .description {position:relative;display:block;margin-top:30px;width:max-content;transition:all .3s;font-size:17px;font-weight:300; opacity: 0.5; }
+#atc03 .inc03_wrap .cont li .description:after {content:"";position:absolute;bottom:0px;left:0px;width:0px;height:2px;transition:all .3s; background-color:#fff}
+#atc03 .inc03_wrap .cont li .description:hover:after {width:100%}
 
 
 
@@ -553,7 +553,7 @@ html, body { height:100%; margin:0; padding:0; }
 .demo-wrapper .demo-gallery:not(.last) { padding-bottom: 1rem; }
 
 .demo-wrapper .demo-text {height:100vh; display: flex; align-items: center;}
-.demo-wrapper .demo-text .text { font-size: 6rem; line-height: 1; font-weight: 900; white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
+.demo-wrapper .demo-text .text { font-size: 6rem; line-height: 1; font-weight: 900; white-space: nowrap; }
 
 .demo-wrapper #opening-experience {justify-content: center; padding: 0;}
 .demo-wrapper #opening-experience .text {font-size: 5rem;}
